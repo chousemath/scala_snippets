@@ -2,15 +2,14 @@ object Euler {
 
   def fib(sum: Int, prev: Int, curr: Int, limit: Int): Int = {
     val next = prev + curr
-    println("prev: " + prev + ", curr: " + curr + ", next: " + next)
-    var newSum = sum
-    if (curr % 2 == 0) {
-      newSum += curr
-    }
     if (next < limit) {
-      fib(newSum, curr, next, limit)
+      if (curr % 2 == 0) {
+        fib(sum + curr, curr, next, limit)
+      } else {
+        fib(sum, curr, next, limit)
+      }
     } else {
-      newSum
+      sum + curr
     }
   }
 
